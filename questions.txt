@@ -1,0 +1,19 @@
+kan ik de afbeelding is zijn volledigheid (het hele plaatje zichtbaar) op de gehele rechterhelft van mijn 
+scherm krijgen?
+
+waarom gedraagt de 100vh (viewport-hight) zich zo raar?: er ontstaat een scrollbar die ik niet wil hebben, maar 
+weet niet zeker of het gebruik van vh good practice is (hoe maak ik een div over de hele pagina, zonder 
+scrollbar te krijgen?)
+
+extra: bevestig wachtwoord veld
+extra: zichtbaar maken van wachtwoord-input icoontje
+
+kleuren-pallete:
+hooibaal:  #b2815e
+schuur: #922829
+gitaar: #db8217
+tarwe: #dfb05f
+
+<iframe style="border: solid #333 0.15em "width="90%" height="70%" src="<?=$artist->preview;?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+vergeet niet de 'titles' van de pagina's aan te passen!

@@ -1,0 +1,405 @@
+@font-face {
+    font-family: headerFont;
+    src: url(fonts/BebasNeue-Regular.ttf);
+}
+
+@font-face {
+    font-family: formFont;
+    src: url(fonts/Roboto-Bold.ttf);
+}
+
+/* menu-gerelateerde CSS */
+
+a {
+    text-decoration: none;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-family: headerFont;
+    color: white;
+}
+
+#menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #dfb05f;
+    height: 11.3vh;
+    font-size: 27px;
+    font-family: formFont;
+    margin-left: 0;
+    width: 100%;
+}
+
+#menu a {
+    text-decoration: none;
+    margin-left: 8px;
+    color: brown;
+}
+
+#menu a:hover {
+    color: black;
+}
+
+#logo {
+    height: 10vh;
+    float: left;
+    background-color: #dfb05f;
+    position: absolute;
+}
+
+#userLogo {
+    height: 9vh;
+    float: right;
+    top: 1.4vh;
+    left: 93%;
+    position: absolute;
+}
+
+#userLogo:hover {
+    cursor: pointer;
+}
+
+#dropdown {
+    z-index: 1;
+    position: absolute;
+    top: 10%;
+    left: 88%;
+    background-color:#db8217;
+    width: 7.4%;
+    display: none;
+}
+
+#dropdown a {
+    border:  white solid 2px;
+    padding: 0.3rem 0.5rem 0.3rem 0.5rem;
+    display: block;
+    text-decoration: none;
+    color: #922829;
+}
+
+#dropdown a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Homepagina-gerelateerde CSS */
+
+#home {
+    display: flex;
+    flex-direction: column;
+}
+
+#section-newsitems {
+    color: white;
+    display: flex;
+    flex-flow: column;
+    min-height: 52vh;
+    background-color: #922829;
+}
+
+#section-newsitems h2 {
+    align-self: center;
+}
+
+#newsitem {
+    background-color: #db8217;
+    border-radius: 9px;
+    align-self: center;
+    width: 80vw ;
+    left: 3px;
+    display: flex;
+}
+
+#newsitem:hover {
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+}
+
+#newsitem h3 {
+    margin-top: 0;
+    margin-bottom: -10px;
+    margin-left: 3px;
+}
+
+#newsitem p {
+    margin-left: 3px;
+}
+
+#newsitems-date {
+    display:flex;
+    align-items: center;
+    border-right-style:solid;
+    height: 93px;
+    width: 93px;
+    font-family: headerFont;
+    font-size: 28px;
+    color: white;
+    overflow: hidden;
+}
+
+#section-attention {
+    margin-top: 8vh;
+    display: flex;
+    justify-content: center;
+    height: 44vh;
+    
+}
+
+.attention-items {
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+    height: 35vh;
+    width: 18vw;
+    margin-top: 1.3rem;
+    margin-right: 9rem;
+    box-shadow: rgba(0, 0, 0, 0.441) 0px 3px 8px; 
+}
+
+.attention-items:hover {
+    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+.attention-items div {
+    background-color: #b2815e;
+    color:white;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.attention-items img {
+    background-size: contain;
+    max-width: auto;
+    height: 100%
+
+}
+ 
+
+/* Algemene CSS */
+
+body {
+    margin: 0;
+    height: 100%;
+    
+}  
+
+
+
+.content {
+    display: flex;
+    height: 100vh;
+}
+
+
+/* De CSS voor de login-pagina */
+
+#imageDiv {
+    background: url("images/cma2019kelseaballerini.png") no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 100%;
+    background-position: 25% -7em;
+
+}
+
+#registerDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #922829;
+    color: white;
+    height: 100%;
+    width: 50%;
+    font-family: formFont;
+    
+}
+
+#loginForm {
+    background-color:#922829;
+    font-size: 19px;
+}
+
+#registerForm {
+    font-size: 19px;
+    background-color:#922829;
+    height: 55%;
+    margin-right: 5px;
+    
+}
+
+#inputPrefix {
+    width: 50px;
+}
+
+.btnForm {
+    font-size: 21px;
+    background-color: #dfb05f;
+    color: #922829;
+    cursor: pointer;
+    
+}
+
+.btnForm:hover {
+    box-shadow: 2px 2px black;
+}
+
+#loginBody {
+    overflow: hidden;
+}
+
+/* De CSS voor de beheermodule */
+textarea {
+    resize: none;
+    width: 25vw;
+    font-family: formFont;
+}
+
+#module-content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* height: 100vh; */
+    background-color: #922829;
+    
+}
+
+#module-table {
+    width: 40vw;
+    background-color: yellow;
+}
+
+
+label {
+    color: white;
+}
+
+input {
+    margin-bottom: 0.5rem;
+}
+
+
+.module-holder{
+    width: 100vw;
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: #b2815e 2px solid
+}
+
+#line-up-container {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    height: 100vh;
+    width: 100vw;
+    margin-top: 14rem;
+}
+
+.artist-profile {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    margin-bottom: 7rem;
+    margin-left: 3rem;
+    margin-right: 3rem;
+    /* height: 45vh; */
+    height: 20rem;
+    width: 20em;
+}
+
+/* .artist-profile div {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #b2815e;
+    
+
+} */
+
+.artist-profile img {
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    border-radius: 19%;
+}
+
+@keyframes animate {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(180deg);
+    
+        
+    }
+    
+}
+
+.artist-profile-side {
+    height: 20rem;
+    border-radius: 15px;
+    transition: all 0.8s ease;
+    backface-visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    padding:2rem;
+    color: white;
+    box-shadow: rgba(0, 0, 0, 0.5) 1.95px 1.95px 7px 2px;
+  }
+
+.artist-profile-side.back {
+    transform: rotateY(-180deg);
+    background-color: #b2815e;
+}
+
+.artist-profile-side.front {
+    background-color: #b2815e;
+}
+
+.artist-profile:hover .artist-profile-side.front {
+    transform: rotateY(180deg);
+    background-color:#dfb05f
+}
+
+.artist-profile:hover .artist-profile-side.back {
+    transform: rotateY(0deg);
+}
+
+#socials-div {
+    display: flex;
+    justify-content: center;
+    background-color: #922829;
+    border-top: #dfb05f solid 4px;
+    border-bottom: #dfb05f solid 4px;
+    width: 100%;
+    height: 3rem;
+    padding-right: 4rem;
+    margin-left: -2rem;
+}
+
+#socials-div img {
+    height: 3rem;
+    width: 3rem;
+}
+
+
+/* De CSS voor de contactpagina */
+#contactpage {
+    
+}
+
+
+
+
+
+
+
+
+
