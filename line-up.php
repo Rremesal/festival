@@ -33,7 +33,7 @@
                             <div id="socials-div"> 
                                 <a href="<?= $artist->twitterlink;?>"><img src="images/twitter.png"/></a>
                                 <a href="<?= $artist->weblink;?>"><img src="images/web.png"/></a>
-
+                                <a href="<?= $artist->preview;?>" target="_blank"><img src="images/youtube.png"/></a>
                             </div>
                         </div>
                     </div>
