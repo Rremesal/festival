@@ -16,8 +16,10 @@
 
 </div>
 <div id="menu"> 
-    <a href="line-up.php">Line-up</a>
-    <a href="contact.php">Contact</a>
-    <a href="#">Buy tickets</a>
-    <a id="btnLogin" href="login.php">Log in</a>
+    <div id="a-items">
+        <a href="line-up.php">Line-up</a>
+        <a href="contact.php">Contact</a>
+        <a href="#">Buy tickets</a>
+        <a id="btnLogin" href="login.php">Log in</a>
+    </div>
 </div>
