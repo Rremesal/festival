@@ -8,6 +8,12 @@
     src: url(fonts/Roboto-Bold.ttf);
 }
 
+@font-face {
+    font-family: regularFont;
+    src: url(fonts/Roboto-Medium.ttf);
+    
+}
+
 /* menu-gerelateerde CSS */
 
 a {
@@ -432,6 +438,8 @@ input {
 
 #contactInfo {
     margin-right: 3rem;
+    font-family: regularFont;
+    color: white;
 }
 
 iframe {
