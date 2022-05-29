@@ -38,10 +38,17 @@ h2 {
     text-decoration: none;
     margin-left: 8px;
     color: brown;
+    padding: 4.2vh 1.5vw 4.2vh 1.5vw;
+    transition: padding 1s;
 }
 
 #menu a:hover {
     text-shadow: 2px 2px  black;
+    padding: 7vh 1.5vw 7vh 1.5vw;
+    background-color: #b2815e;
+    border-radius: 25%;
+
+
 }
 
 #a-items {
@@ -80,7 +87,7 @@ h2 {
 }
 
 #dropdown a {
-    border:  white solid 2px;
+    border:  #922829 solid 2px;
     padding: 0.3rem 0.5rem 0.3rem 0.5rem;
     display: block;
     text-decoration: none;
@@ -122,7 +129,7 @@ h2 {
 }
 
 #newsitem:hover {
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+   border: white solid 4px;
 }
 
 #newsitem h3 {
@@ -140,7 +147,7 @@ h2 {
     align-items: center;
     border-right-style:solid;
     height: 93px;
-    width: 93px;
+    /* width: 93px; */
     font-family: headerFont;
     font-size: 28px;
     color: white;
