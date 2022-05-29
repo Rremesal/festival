@@ -40,7 +40,7 @@
                             <div  id="newsitems-date">
                                 <?php 
                                 $orginalDate = $newsitems->date; 
-                                $newDate = date("d m Y",strtotime($orginalDate));
+                                $newDate = date("d-m-Y",strtotime($orginalDate));
                                 echo $newDate;
                                 ?>
                             </div>
