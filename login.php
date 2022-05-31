@@ -8,7 +8,7 @@
 </head>
 <body id="loginBody">
     <?php require("menu.php"); ?>
-    <div class="content">
+    <div class="content" id="loginPage">
         <div id="registerDiv">
             <form id="registerForm" method="POST">
                 <h2>Register Account</h2>
