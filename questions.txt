@@ -14,6 +14,6 @@ schuur: #922829
 gitaar: #db8217
 tarwe: #dfb05f
 
-<iframe style="border: solid #333 0.15em "width="90%" height="70%" src="<?=$artist->preview;?>" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
 vergeet niet de 'titles' van de pagina's aan te passen!
+
+nieuwsitems padding vergroten zodat de datum niet tegen de randen aan ligt
