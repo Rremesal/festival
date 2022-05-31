@@ -1,5 +1,6 @@
 
 <a href="index.php"><img id="logo" src="images/logo.png"/></a>
+<a><img id="shoppingcartLogo" src="images/shoppingcart2.png"/></a>
 <?php if(isset($_SESSION['user'])) {
 ?>      <a onclick="showDropDown()"><img id="userLogo" src="images/user_logo.png"/></a>
 <?php } ?>
