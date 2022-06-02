@@ -58,7 +58,6 @@
                 ?>          </form> 
                 <?php    
                             $query1 = "SELECT user_id FROM user WHERE email='".$_SESSION['user']."'";
-                            echo $query1;
                             $stm = $conn->prepare($query1);
                             $stm->execute();
                             $userdata = $stm->fetch(PDO::FETCH_OBJ);
