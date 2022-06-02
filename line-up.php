@@ -24,15 +24,15 @@
         <div id="line-up-container">
     <?php 
         if(isset($_POST['btnSearch'])) {
-            $zoek = "%".$_POST['txtSearch']."%";
+            $search = "%".$_POST['txtSearch']."%";
             $searchQuery = "SELECT * FROM lineup WHERE first_name LIKE :zoek OR last_name LIKE :zoek";
             $stm = $conn->prepare($searchQuery);
-            $stm->bindParam(":zoek", $zoek);
+            $stm->bindParam(":zoek", $search);
             if($stm->execute()) {
                 $data = $stm->fetchAll(PDO::FETCH_OBJ);
                
                 foreach($data as $artist) {
-    ?>          
+    ?> 
                     <div class="artist-profile">
                         <div class="artist-profile-side front">
                             <div>
@@ -52,6 +52,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 
                             
     <?php
