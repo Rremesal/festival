@@ -480,6 +480,53 @@ iframe {
     margin-right: 2rem;
 }
 
+/* De CSS voor webshop.php */
+#webshopPage {
+    background-color: #922829;
+    flex-direction: column;
+}
+
+.ticket-div {
+    display: flex;
+    height: 30vh;
+    margin: 2vh 3vw 2vh 3vw;
+    border: solid 3px #dfb05f;
+    background-color: #b2815e;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.ticket-info {
+    background-color: #b2815e;
+    height: 33vh;
+    width: 55%;
+    z-index: 1;
+}
+
+.ticket-info h2 {
+    margin-left: 3vw;
+}
+
+#ticket-image {
+    
+    border-radius: 15px;
+    height: 30vh;
+    width: 60vw;
+    top: 13.7vh;
+    right: 3.2vw;
+
+}
+
+#ticket-image img {
+    position: relative;
+    height: 29.8vh;
+    width: 100%;
+    right: 0;
+    z-index: 0;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
 
 
 
