@@ -25,7 +25,8 @@
     <?php 
         if(isset($_POST['btnSearch'])) {
             $search = "%".$_POST['txtSearch']."%";
-            $searchQuery = "SELECT * FROM lineup WHERE first_name LIKE :zoek OR last_name LIKE :zoek";
+            // $searchQuery = "SELECT * FROM lineup WHERE first_name LIKE :zoek OR last_name LIKE :zoek";
+            $searchQuery = "SELECT * FROM lineup WHERE CONCAT(first_name,last_name) LIKE :zoek";
             $stm = $conn->prepare($searchQuery);
             $stm->bindParam(":zoek", $search);
             if($stm->execute()) {
