@@ -19,10 +19,17 @@
         ?>      <div class="ticket-div">
                     <div class="ticket-info">
                         <h2><?=$ticket->ticket_type;?></h2>
+                        
+                        <div class="ticket-price">
+                            <h1><?="€ ".$ticket->price ?></h1>
+                        </div>
+
+                        <button class="btnForm">Add to Cart</button>
+
                     </div>
 
                     <div id="ticket-image">
-                        <img src="images/ticket.png"/>
+                        <img src="<?=$ticket->image;?>"/>
                     </div>
                 </div>
                 <br/>

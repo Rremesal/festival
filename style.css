@@ -213,10 +213,8 @@ body {
 }  
 
 
-
 .content {
     display: flex;
-    /* height: 100vh; */
     overflow-x: hidden;
 }
 
@@ -505,7 +503,35 @@ iframe {
 
 .ticket-info h2 {
     margin-left: 3vw;
+    margin-right: 0;
 }
+
+.ticket-price {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #db8217;
+    border: #922829 2px solid;
+    border-radius: 50%;
+    width: 10vw;
+    height: 10vh;
+    margin-left: 3vw;
+}
+
+.ticket-price h1 {
+    font-size: 2.5rem;
+    color: white;
+    font-family: headerFont;
+}
+
+.ticket-info button {
+    margin-left: 29vw;
+    margin-top: 90%;
+    margin-right: 3vw;
+    width: 12vw;
+}
+
 
 #ticket-image {
     
