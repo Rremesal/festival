@@ -83,7 +83,7 @@ if(isset($_POST['btnRegister'])) {
                         var_dump($rows);
                         if($password === $rows->password) {
                             session_start();
-                            $_SESSION['user'] = $rows->email;
+                            $_SESSION['user'] = $rows->user_id;
                             $_SESSION['password'] = $rows->password;
                             $_SESSION['isAdmin'] = $rows->isAdmin;
                             header("Location: index.php");
