@@ -1,5 +1,5 @@
 function showDropDown() {
-    var x = document.getElementById("dropdown");
+    let x = document.getElementById("dropdown");
     if(x.style.display == "none") {
         x.style.display = "block";
     } else x.style.display = "none"; 
