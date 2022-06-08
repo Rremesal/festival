@@ -17,7 +17,7 @@
                 </label>
                 <br/>
                 <label>(Prefix +) Surname:<br/>
-                    <input type="text" id="inputPrefix" name="txtPrefix"/> <input type="text" name="txtSurname"/>
+                    <input type="text" class="inputPrefix" name="txtPrefix"/> <input type="text" name="txtSurname"/>
                 </label>
                 <br/>
                 <label>Phone number:<br/>
@@ -35,28 +35,26 @@
                 <br/>
                 <input type="submit"  value="Register" class="btnForm" name="btnRegister"/>
                 <br/>
-<?php 
-if(isset($_POST['btnRegister'])) {
-
-    $firstName = $_POST['txtFirstName'];
-    $prefix = $_POST['txtPrefix'];
-    $surname = $_POST['txtSurname'];
-    $phoneNumber = $_POST['txtPhoneNumber'];
-    $email = $_POST['txtEmail'];
-    $password = $_POST['txtPassword'];
-
-    $insertQuery = "INSERT INTO user (email, password,phonenumber,firstname,surname_prefix,surname) ". 
-    "VALUES ('$email','$password','$phoneNumber','$firstName','$prefix','$surname')";
-    $stm = $conn->prepare($insertQuery);
-    if($stm->execute()) {
-    echo "geregisteerd";
-    ?>    </form>
-    <?php
-    }
-
-}
-    ?>
-    </form>
+            <?php 
+            if(isset($_POST['btnRegister'])) {
+                $insertUserQuery = "INSERT INTO user (email, password,phonenumber,firstname,surname_prefix,surname,isAdmin) ". 
+                "VALUES ( :firstname, :password, :phonenumber, :firstname, :surname, :prefix, 0)";
+                $passwordHash = password_hash($_POST['txtPassword'],PASSWORD_DEFAULT);
+                $stm = $conn->prepare($insertUserQuery);
+                $stm->bindParam(":email",$_POST['txtEmail']);
+                $stm->bindParam(":password",$passwordHash);
+                $stm->bindParam(":phonenumber",$_POST['txtPhoneNumber']);
+                $stm->bindParam(":firstname",$_POST['txtFirstName']);
+                $stm->bindParam(":prefix",$_POST['txtPrefix']);
+                $stm->bindParam(":surname",$_POST['txtSurname']);
+                if($stm->execute()) {
+                echo "geregisteerd";
+                ?>    </form>
+                <?php
+                }
+            }
+                ?>
+                </form>
 
             <form id="loginForm" method="POST">
                 <h2>Log in</h2>
@@ -72,25 +70,23 @@ if(isset($_POST['btnRegister'])) {
                 <input type="submit" class="btnForm" name="btnLogin" value="Log in"/>
                 <?php 
                 if(isset($_POST['btnLogin'])) {
-                    $username = $_POST['txtEmailLogin'];
                     $password = $_POST['txtPasswordLogin'];
 
-                    $query = "SELECT * FROM user WHERE email='$username'";
+                    $query = "SELECT * FROM user WHERE email=:username";
                     $stm = $conn->prepare($query);
-                    var_dump($query);
+                    $stm->bindParam(":username",$_POST['txtEmailLogin']);
                     if($stm->execute()) {
-                        $rows = $stm->fetch(PDO::FETCH_OBJ);
-                        var_dump($rows);
-                        if($password === $rows->password) {
+                        $user = $stm->fetch(PDO::FETCH_OBJ);
+                        if(password_verify($password,$user->password)) {
                             session_start();
-                            $_SESSION['user'] = $rows->user_id;
-                            $_SESSION['password'] = $rows->password;
-                            $_SESSION['isAdmin'] = $rows->isAdmin;
+                            $_SESSION['user'] = $user->user_id;
+                            $_SESSION['user_name'] = $user->firstname;
+                            $_SESSION['password'] = $user->password;
+                            $_SESSION['isAdmin'] = $user->isAdmin;
                             header("Location: index.php");
                         }
-                    }
+                    } 
                 }
-
                 ?>
             </form>
         

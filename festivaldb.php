@@ -1,3 +1,5 @@
+
+
 <?php 
     $host = "localhost";
     $username = "root";
@@ -10,7 +12,9 @@
         echo "verbinding mislukt";
     }
 
+    function hashPassword($password){
+        $hashedPassword = password_hash($password,PASSWORD_DEFAULT);
 
-
-
+        return $hashedPassword;
+    }
 ?>
