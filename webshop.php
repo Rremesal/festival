@@ -64,7 +64,8 @@
                     else $_SESSION['shoppingCart'][$ticketId] = $amount;
 
                 }
-
+                // var_dump($_SESSION['shoppingCart']);
+                // unset($_SESSION['shoppingCart']);
                 ?>
 
 
