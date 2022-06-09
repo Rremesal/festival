@@ -1,7 +1,5 @@
 <?php include("festivaldb.php"); ?>
 <?php session_start(); ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,12 +40,32 @@
             <tr id="totalPrice-row">
                 <td>Totaal:</td>
                 <td></td>
-                <td></td>
                 <td><?= $totalPrice.".00"?></td>
             </tr>
         </table>
 
+        <div id="orderDiv">
+            <form method="POST">
+                <input type="submit" value="Order" name="btnOrder" class="btnForm"/>
+            </form>
+        </div>
+    
 
+    <?php 
+     var_dump($_SESSION['shoppingCart']);
+        if(isset($_POST['btnOrder'])) {
+           
+            foreach($_SESSION['shoppingCart'] as $id => $value) {
+                $orderQuery = "INSERT INTO transaction (`user_id`,`ticket_id`,`date`,`amount`)". 
+                " VALUES (".$_SESSION['user'].",$id,NOW(),$value)";
+                echo $orderQuery."<br/>";
+                $stm = $conn->prepare($orderQuery);
+                $stm->execute();
+            } 
+            
+            
+        }
+    ?>
     </div>
 </body>
 </html>

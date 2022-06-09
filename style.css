@@ -593,7 +593,8 @@ iframe {
 }
 #orderPage {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     height: 100vh;
     background-color: #922829;
 }
@@ -624,6 +625,18 @@ iframe {
 
 #trash {
     height: 3vh;
+}
+
+#orderDiv {
+    margin-top: 2vh;
+    display: flex;
+    width: 80vw;
+    height: 5vh;
+    justify-content: flex-end;
+}
+
+#orderDiv input {
+    width: 6vw;
 }
 
 

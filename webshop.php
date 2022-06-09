@@ -54,19 +54,15 @@
 
 
         <?php
+            if(isset($_POST['btnSubmit'])) {
+                $ticketId = $_POST['ticket_id'];
+                $amount = intval($_POST['amount']);
 
-                if(isset($_POST['btnSubmit'])) {
-                    $ticketId = $_POST['ticket_id'];
-                    $amount = intval($_POST['amount']);
-
-                    if(empty($_SESSION['shoppingCart'])) $_SESSION['shoppingCart'] = array();
-                    if(isset($_SESSION['shoppingCart'][$ticketId])) $_SESSION['shoppingCart'][$ticketId] += $amount;
-                    else $_SESSION['shoppingCart'][$ticketId] = $amount;
-
-                }
-                // var_dump($_SESSION['shoppingCart']);
-                // unset($_SESSION['shoppingCart']);
-                ?>
+                if(empty($_SESSION['shoppingCart'])) $_SESSION['shoppingCart'] = array();
+                if(isset($_SESSION['shoppingCart'][$ticketId])) $_SESSION['shoppingCart'][$ticketId] += $amount;
+                else $_SESSION['shoppingCart'][$ticketId] = $amount;
+            }
+        ?>
 
 
 
