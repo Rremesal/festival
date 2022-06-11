@@ -16,6 +16,7 @@
                 <th>Amount</th>
                 <th>Price</th>
                 <th></th>
+                <th></th>
             </tr>
             <?php $totalPrice = 0; ?>
             <?php if(isset($_SESSION['shoppingCart'])) {
@@ -29,7 +30,17 @@
                 ?> 
                 <tr>
                     <td><?=$data->ticket_type?></td>
-                    <td><?=$amount?></td>
+                    <td id="tdAmount">
+                    <div>
+                            <form method="POST">
+                                <input type="submit" name="btnSubtract" value="-"/>
+                                <?=$amount?>
+                                <input type="text" name="id" value="<?=$id?>" hidden/>
+                                <input type="submit" value="+" name="btnAdd"/>
+                            </form>
+                    </div>
+                        
+                    </td>
                     <td><?=$data->price?></td>
                     <td><a href="removefromcart.php?id=<?=$id?>"><img id="trash" src="images/trash.png"/></a></td>
                     
@@ -52,9 +63,21 @@
     
 
     <?php 
-     var_dump($_SESSION['shoppingCart']);
+        if(empty($_SESSION['shoppingCart'])) {
+    ?>      <h3>Your shoppingcart is empty.</h3>
+    <?php
+        }
+
+        
+        if(isset($_POST['btnAdd'])) {
+            $id = $_POST['id'];
+            $_SESSION['shoppingCart'][$id] += 1;
+        }
+        if(isset($_POST['btnSubtract']) && $_SESSION['shoppingCart'][$id] > 0) {
+            $id = $_POST['id'];
+            $_SESSION['shoppingCart'][$id] -= 1;
+        }
         if(isset($_POST['btnOrder'])) {
-           
             foreach($_SESSION['shoppingCart'] as $id => $value) {
                 $orderQuery = "INSERT INTO transaction (`user_id`,`ticket_id`,`date`,`amount`)". 
                 " VALUES (".$_SESSION['user'].",$id,NOW(),$value)";
@@ -62,8 +85,6 @@
                 $stm = $conn->prepare($orderQuery);
                 $stm->execute();
             } 
-            
-            
         }
     ?>
     </div>

@@ -613,6 +613,7 @@ iframe {
 
 #orderPage table th {
     border-bottom: 2px solid #dfb05f;
+    width: 10vw;
 }
 
 #totalPrice-row {
@@ -637,6 +638,23 @@ iframe {
 
 #orderDiv input {
     width: 6vw;
+}
+
+#changedAmount {
+    width: 1vw;
+    border-radius: 0;
+    text-align: center;
+}
+
+#orderPage td input {
+    background-color: #dfb05f;
+    color: #922829;
+    border: 0;
+    height: 21px
+}
+
+#orderPage h3 {
+    color: white;
 }
 
 
