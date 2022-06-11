@@ -38,7 +38,7 @@
             <?php 
             if(isset($_POST['btnRegister'])) {
                 $insertUserQuery = "INSERT INTO user (email, password,phonenumber,firstname,surname_prefix,surname,isAdmin) ". 
-                "VALUES ( :firstname, :password, :phonenumber, :firstname, :surname, :prefix, 0)";
+                "VALUES ( :email, :password, :phonenumber, :firstname, :surname, :prefix, 0)";
                 $passwordHash = password_hash($_POST['txtPassword'],PASSWORD_DEFAULT);
                 $stm = $conn->prepare($insertUserQuery);
                 $stm->bindParam(":email",$_POST['txtEmail']);
