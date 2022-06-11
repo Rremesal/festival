@@ -25,25 +25,22 @@
                         $stm = $conn->prepare($query);
                         $stm->execute();
                         $data = $stm->fetch(PDO::FETCH_OBJ);
-                        $totalPrice += $data->price;
-                        
+                        $totalPrice += $data->price;    
                 ?> 
                 <tr>
                     <td><?=$data->ticket_type?></td>
                     <td id="tdAmount">
-                    <div>
+                        <div>
                             <form method="POST">
                                 <input type="submit" name="btnSubtract" value="-"/>
                                 <?=$amount?>
                                 <input type="text" name="id" value="<?=$id?>" hidden/>
                                 <input type="submit" value="+" name="btnAdd"/>
                             </form>
-                    </div>
-                        
+                        </div> 
                     </td>
                     <td><?=$data->price?></td>
                     <td><a href="removefromcart.php?id=<?=$id?>"><img id="trash" src="images/trash.png"/></a></td>
-                    
                 </tr>
                 
                 <?php }?>
@@ -77,7 +74,7 @@
             $id = $_POST['id'];
             $_SESSION['shoppingCart'][$id] -= 1;
         }
-        if(isset($_POST['btnOrder'])) {
+        if(isset($_POST['btnOrder']) && isset($_SESSION['shoppingCart'])) {
             foreach($_SESSION['shoppingCart'] as $id => $value) {
                 $orderQuery = "INSERT INTO transaction (`user_id`,`ticket_id`,`date`,`amount`)". 
                 " VALUES (".$_SESSION['user'].",$id,NOW(),$value)";
@@ -85,6 +82,8 @@
                 $stm = $conn->prepare($orderQuery);
                 $stm->execute();
             } 
+            header("Location: ordered.php");
+            unset($_SESSION['shoppingCart']);
         }
     ?>
     </div>

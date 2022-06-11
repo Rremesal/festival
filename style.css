@@ -657,6 +657,20 @@ iframe {
     color: white;
 }
 
+/* De CSS voor ordered.php */
+#orderedBody {
+    height: 100vw;
+    width: 100vw;
+    overflow: hidden;
+}
+
+#orderedDiv {
+    display: flex;
+    justify-content: center;
+    background-color: #922829;
+    height: 100vh;
+}
+
 
 
 
