@@ -1,4 +1,7 @@
-<?php include("festivaldb.php"); ?>
+<?php 
+    include("festivaldb.php"); 
+    $conn = connectToDB();
+?>
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html>

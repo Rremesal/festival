@@ -37,21 +37,10 @@
                 <br/>
             <?php 
             if(isset($_POST['btnRegister'])) {
-                $insertUserQuery = "INSERT INTO user (email, password,phonenumber,firstname,surname_prefix,surname,isAdmin) ". 
-                "VALUES ( :email, :password, :phonenumber, :firstname, :surname, :prefix, 0)";
-                $passwordHash = password_hash($_POST['txtPassword'],PASSWORD_DEFAULT);
-                $stm = $conn->prepare($insertUserQuery);
-                $stm->bindParam(":email",$_POST['txtEmail']);
-                $stm->bindParam(":password",$passwordHash);
-                $stm->bindParam(":phonenumber",$_POST['txtPhoneNumber']);
-                $stm->bindParam(":firstname",$_POST['txtFirstName']);
-                $stm->bindParam(":prefix",$_POST['txtPrefix']);
-                $stm->bindParam(":surname",$_POST['txtSurname']);
-                if($stm->execute()) {
-                echo "geregisteerd";
+                insertUserInDB($_POST['txtFirstName'],$_POST['txtPrefix'], $_POST['txtSurname'],
+                $_POST['txtPhoneNumber'],$_POST['txtEmail'],$_POST['txtPassword']);
                 ?>    </form>
                 <?php
-                }
             }
                 ?>
                 </form>
@@ -69,24 +58,7 @@
                 <br/>
                 <input type="submit" class="btnForm" name="btnLogin" value="Log in"/>
                 <?php 
-                if(isset($_POST['btnLogin'])) {
-                    $password = $_POST['txtPasswordLogin'];
-
-                    $query = "SELECT * FROM user WHERE email=:username";
-                    $stm = $conn->prepare($query);
-                    $stm->bindParam(":username",$_POST['txtEmailLogin']);
-                    if($stm->execute()) {
-                        $user = $stm->fetch(PDO::FETCH_OBJ);
-                        if(password_verify($password,$user->password)) {
-                            session_start();
-                            $_SESSION['user'] = $user->user_id;
-                            $_SESSION['user_name'] = $user->firstname;
-                            $_SESSION['password'] = $user->password;
-                            $_SESSION['isAdmin'] = $user->isAdmin;
-                            header("Location: index.php");
-                        }
-                    } 
-                }
+                if(isset($_POST['btnLogin'])) varifyPasswordOfUser($_POST['txtEmailLogin'],$_POST['txtPasswordLogin']);
                 ?>
             </form>
         
