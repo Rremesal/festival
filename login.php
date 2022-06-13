@@ -1,4 +1,7 @@
-<?php include("festivaldb.php"); ?>
+<?php 
+    include("festivaldb.php"); 
+    $conn = connectToDB();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,29 +15,18 @@
         <div id="registerDiv">
             <form id="registerForm" method="POST">
                 <h2>Register Account</h2>
-                <label>First name:<br/>
-                    <input type="text" name="txtFirstName"/>
-                </label>
-                <br/>
-                <label>(Prefix +) Surname:<br/>
-                    <input type="text" class="inputPrefix" name="txtPrefix"/> <input type="text" name="txtSurname"/>
-                </label>
-                <br/>
-                <label>Phone number:<br/>
-                    <input type="text" name="txtPhoneNumber"/>
-                </label>
-                <br/>
-                <label>Email:<br/>
-                    <input type="text" name="txtEmail"/>
-                </label>
-                <br/>
-                <label>Password:<br/>
-                    <input type="password" name="txtPassword"/>
-                </label>
-                <br/>
-                <br/>
-                <input type="submit"  value="Register" class="btnForm" name="btnRegister"/>
-                <br/>
+                <label for="txtFirstName">First name:</label>
+                <div><input type="text" name="txtFirstName" id="txtFirstName"/></div>
+                <label for="txtPrefix">(Prefix +) Surname:</label>
+                <div><input type="text" class="inputPrefix" name="txtPrefix" id="txtPrefix"/> <input type="text" name="txtSurname"/></div>
+                <label for="txtPhoneNumber">Phone number:</label>
+                <div><input type="text" name="txtPhoneNumber" id="txtPhoneNumber"/></div>
+                <label for="txtEmail">Email:</label>
+                <div><input type="text" name="txtEmail" id="txtEmail"/></div>
+                <label for="txtPassword">Password:</label>
+                <div><input type="password" name="txtPassword" id="txtPassword"/></div>
+                <div><input type="submit"  value="Register" class="btnForm" name="btnRegister"/></div>
+            
             <?php 
             if(isset($_POST['btnRegister'])) {
                 insertUserInDB($_POST['txtFirstName'],$_POST['txtPrefix'], $_POST['txtSurname'],
@@ -47,16 +39,12 @@
 
             <form id="loginForm" method="POST">
                 <h2>Log in</h2>
-                <label>Email:<br/>
-                    <input type="text" name="txtEmailLogin"/>
-                </label>
-                <br/>
-                <label>Password:<br/>
-                    <input type="text" name="txtPasswordLogin"/>
-                </label>
-                <br/>
-                <br/>
-                <input type="submit" class="btnForm" name="btnLogin" value="Log in"/>
+                <label for="txtEmailLogin">Email:</label>
+                <div><input type="text" name="txtEmailLogin" id="txtEmailLogin"/></div>
+                <label for="txtPasswordLogin">Password:</label>
+                <div><input type="text" name="txtPasswordLogin" id="txtPasswordLogin"/></div>
+                <div><input type="submit" class="btnForm" name="btnLogin" value="Log in"/></div>
+                
                 <?php 
                 if(isset($_POST['btnLogin'])) varifyPasswordOfUser($_POST['txtEmailLogin'],$_POST['txtPasswordLogin']);
                 ?>

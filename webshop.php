@@ -1,4 +1,4 @@
-<?php include("festivaldb.php"); ?>
+<?php include("festivaldb.php");?>
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,6 +14,7 @@
     <?php 
         $query = "SELECT * FROM ticket";
         $stm = $conn->prepare($query);
+        $conn = connectToDB();
         if($stm->execute()) {
             $data = $stm->fetchAll(PDO::FETCH_OBJ);
            
