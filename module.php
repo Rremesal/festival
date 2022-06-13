@@ -1,4 +1,7 @@
-<?php include("festivaldb.php"); ?>
+<?php 
+    include("festivaldb.php");
+    $conn = connectToDB(); 
+?>
 <?php session_start(); ?>
 
 <!DOCTYPE html>
@@ -57,18 +60,13 @@
                             if($stm->execute()) {
                                 echo "Newsitem added";
                     ?>          </form> 
-                    <?php    
-                                $query1 = "SELECT user_id FROM user WHERE email='".$_SESSION['user']."'";
-                                $stm = $conn->prepare($query1);
-                                $stm->execute();
-                                $userdata = $stm->fetch(PDO::FETCH_OBJ);
-                                
+                    <?php               
                                 $query2 = "SELECT item_id FROM newsitem WHERE content='$newsitem'";
                                 $stm = $conn->prepare($query2);
                                 $stm->execute();
                                 $itemdata = $stm->fetch(PDO::FETCH_OBJ);
 
-                                $query3 = "INSERT INTO admin_item (user_id,item_id,date) VALUES ($userdata->user_id,$itemdata->item_id,now())";
+                                $query3 = "INSERT INTO admin_item (user_id,item_id,date) VALUES (".$_SESSION['user'].",$itemdata->item_id,now())";
                                 $stm = $conn->prepare($query3);
                                 $stm->execute();
  
