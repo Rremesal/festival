@@ -34,7 +34,7 @@
     <section id="section-newsitems">
         <h2>NEWS</h2>
                 <?php 
-                $query = "SELECT * FROM newsitem n RIGHT JOIN admin_item ai ON n.item_id=ai.item_id LIMIT 3";
+                $query = "SELECT * FROM newsitem n RIGHT JOIN admin_item ai ON n.item_id=ai.item_id ORDER BY date DESC";
                 $stm = $conn->prepare($query);
                 if($stm->execute()) {
                     $data = $stm->fetchAll(PDO::FETCH_OBJ);
