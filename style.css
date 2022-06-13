@@ -53,6 +53,7 @@ h2 {
     padding: 7vh 1.5vw 7vh 1.5vw;
     background-color: #b2815e;
     border-radius: 25%;
+    border: 2px solid black;
 }
 
 #a-items {
