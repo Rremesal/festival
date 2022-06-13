@@ -13,8 +13,8 @@
 
     <?php 
         $query = "SELECT * FROM ticket";
-        $stm = $conn->prepare($query);
         $conn = connectToDB();
+        $stm = $conn->prepare($query);
         if($stm->execute()) {
             $data = $stm->fetchAll(PDO::FETCH_OBJ);
            
