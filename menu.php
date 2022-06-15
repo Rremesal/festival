@@ -15,10 +15,17 @@
 </div>
 <div id="menu"> 
     <div id="a-items">
-        <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1)?> <a href="module.php">Admin</a>
+        <?php 
+            if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1) {
+        ?>      <a href="module.php">Admin</a>
+        <?php }?> 
         <a href="line-up.php">Line-up</a>
         <a href="contact.php">Contact</a>
         <a href="webshop.php">Buy tickets</a>
-        <a id="btnLogin" href="login.php">Log in</a>
+        <?php 
+            if(empty($_SESSION['user'])) {
+        ?>      <a id="btnLogin" href="login.php">Log in</a>
+        <?php }?>
+        
     </div>
 </div>
