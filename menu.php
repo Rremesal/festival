@@ -15,6 +15,7 @@
 </div>
 <div id="menu"> 
     <div id="a-items">
+        <?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin'] == 1)?> <a href="module.php">Admin</a>
         <a href="line-up.php">Line-up</a>
         <a href="contact.php">Contact</a>
         <a href="webshop.php">Buy tickets</a>
