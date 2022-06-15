@@ -21,7 +21,7 @@
                 </div> 
             </div>
         </a>
-        <a>
+        <a href="webshop.php">
         <div class="attention-items">
             <img src="images/tortuga_item.jpg"/>
             <div>
@@ -33,39 +33,31 @@
     </section>
     <section id="section-newsitems">
         <h2>NEWS</h2>
-                <?php 
-                $query = "SELECT * FROM newsitem n RIGHT JOIN admin_item ai ON n.item_id=ai.item_id ORDER BY date DESC";
-                $stm = $conn->prepare($query);
-                if($stm->execute()) {
-                    $data = $stm->fetchAll(PDO::FETCH_OBJ);
-                    foreach($data as $newsitems) {
-                ?>      <div id="newsitem">
-                            <div  id="newsitems-date">
-                                <?php 
-                                $orginalDate = $newsitems->date; 
-                                $newDate = date("d-m-Y",strtotime($orginalDate));
-                                echo $newDate;
-                                ?>
-                            </div>
-                            <div id="newsitems-content">
-                                <h3> <?= $newsitems->header; ?></h3>
-                                <p><?= $newsitems->content; ?><p>
-
-                            </div>
+            <?php 
+            $query = "SELECT * FROM newsitem n RIGHT JOIN admin_item ai ON n.item_id=ai.item_id ORDER BY date DESC";
+            $stm = $conn->prepare($query);
+            if($stm->execute()) {
+                $data = $stm->fetchAll(PDO::FETCH_OBJ);
+                foreach($data as $newsitems) {
+            ?>      <div id="newsitem">
+                        <div  id="newsitems-date">
+                            <?php 
+                            $orginalDate = $newsitems->date; 
+                            $newDate = date("d-m-Y",strtotime($orginalDate));
+                            echo $newDate;
+                            ?>
                         </div>
-                        <br/>
-                <?php        
-                    }
-                    
-                } else echo "mislukt";
-                ?>
-            
-            
-        
-
+                        <div id="newsitems-content">
+                            <h3> <?= $newsitems->header; ?></h3>
+                            <p><?= $newsitems->content; ?><p>
+                        </div>
+                    </div>
+                    <br/>
+            <?php        
+                }
+                
+            } else echo "mislukt";
+            ?>
     </section>
-    
-
-    
 </body>
 </html>
