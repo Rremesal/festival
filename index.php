@@ -22,14 +22,22 @@
             </div>
         </a>
         <a href="webshop.php">
-        <div class="attention-items">
-            <img src="images/tortuga_item.jpg"/>
-            <div>
-                <h2>Tickets Now</h2>
+            <div class="attention-items">
+                <img src="images/tortuga_item.jpg"/>
+                <div>
+                    <h2>Tickets Now</h2>
+                </div>
             </div>
-        </div>
         </a>
 
+        <a href="login.php">
+            <div class="attention-items"> 
+                <img src="images/login_item.png"/>
+                <div>
+                    <h2>Login</h2>
+                </div>
+            </div>
+        </a>
     </section>
     <section id="section-newsitems">
         <h2>NEWS</h2>

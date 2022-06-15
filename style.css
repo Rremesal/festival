@@ -45,7 +45,7 @@ h2 {
     margin-left: 8px;
     color: brown;
     padding: 4.2vh 1.5vw 4.2vh 1.5vw;
-    transition: padding 1s;
+    transition: padding 1s; 
 }
 
 #menu a:hover {
@@ -200,7 +200,7 @@ h2 {
 
 .attention-items img {
     background-size: contain;
-    max-width: auto;
+    /* max-width: auto; */
     height: 100%
 
 }
