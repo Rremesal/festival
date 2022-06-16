@@ -20,18 +20,12 @@
                     <th>Kind of Ticket</th>
                     <th>Amount sold</th>
                 </tr>
-                <tr>
-                    <td>[ticketsoort1]</td>
-                    <td>aantal</td>
-                </tr>
-                <tr>
-                    <td>[ticketsoort2]</td>
-                    <td>aantal</td>
-                </tr>
-                <tr>
-                    <td>[ticketsoort3]</td>
-                    <td>aantal</td>
-                </tr>
+                <?php 
+                    $ticketsSoldQuery = "SELECT * FROM transaction LEFT JOIN ticket ON".  
+                    "ticket.ticket_id=transaction.ticket_id";
+                    $stm = $conn->prepare($ticketsSoldQuery);
+                    $stm->execute();
+                ?>
             </table>
         </div>
 
