@@ -29,8 +29,19 @@
         $stm->bindParam(":firstname",$firstname);
         $stm->bindParam(":prefix",$surname_prefix);
         $stm->bindParam(":surname",$surname);
-        
-        return $stm->execute();
+        $stm->execute();
+
+        $selectUserQuery = "SELECT * FROM user WHERE email='$email'";
+        $stm = $conn->prepare($selectUserQuery);
+        $stm->execute();
+        $registeredUser = $stm->fetch(PDO::FETCH_OBJ);
+        session_start();
+        $_SESSION['user'] = $registeredUser->user_id;
+        $_SESSION['user_name'] = $registeredUser->firstname;
+        $_SESSION['password'] = $registeredUser->password;
+        $_SESSION['isAdmin'] = $registeredUser->isAdmin;
+        header("Location: index.php");
+
     }
 
     function varifyPasswordOfUser($email,$password) {
