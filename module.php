@@ -19,13 +19,30 @@
                 <tr>
                     <th>Kind of Ticket</th>
                     <th>Amount sold</th>
+                    <th>Income</th>
                 </tr>
                 <?php 
-                    $ticketsSoldQuery = "SELECT * FROM transaction LEFT JOIN ticket ON".  
-                    "ticket.ticket_id=transaction.ticket_id";
+                    $ticketsSoldQuery = "SELECT * FROM transaction LEFT JOIN ticket ON ticket.ticket_id=transaction.ticket_id GROUP BY ticket_type";
                     $stm = $conn->prepare($ticketsSoldQuery);
                     $stm->execute();
+                    $tickets = $stm->fetchAll(PDO::FETCH_OBJ);
+                    $totalIncome = 0;
+                    foreach($tickets as $ticket) {
+                ?>      <tr>
+                            <td><?=$ticket->ticket_type?></td>
+                            <td><?=$ticket->amount?></td>
+                            <td><?= "€ ",$ticket->price += $ticket->price?></td>
+                        </tr>
+                        <?php $totalIncome += $ticket->price?>
+                        
+                <?php
+                    }    
                 ?>
+                <tr id="totalIncomeRow">
+                    <td>Total</td>
+                    <td></td>
+                    <td><?= "€ ",$totalIncome?></td>
+                </tr> 
             </table>
         </div>
 

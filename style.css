@@ -293,16 +293,33 @@ textarea {
     display: flex;
     align-items: center;
     flex-direction: column;
-    /* height: 100vh; */
     background-color: #922829;
     
 }
 
 #module-table {
     width: 40vw;
-    background-color: yellow;
+    background-color: #b2815e;
+    margin-top: 5vh;
 }
 
+#module-table table {
+    width: 100%;
+    border-collapse: collapse;
+    color: white;
+}
+
+#module-table td {
+    text-align: center;
+}
+
+#module-table th {
+    border-bottom: solid 2px #dfb05f;
+}
+
+#totalIncomeRow {
+    border-top: 2px solid #dfb05f;
+}
 
 label {
     color: white;
@@ -324,6 +341,7 @@ input {
 
 #moduleBody {
     overflow-x: hidden;
+    font-family: regularFont;
 }
 
 #btnConvert {
