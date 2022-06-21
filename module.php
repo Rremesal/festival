@@ -79,7 +79,6 @@
                                 $query3 = "INSERT INTO admin_item (user_id,item_id,date) VALUES (".$_SESSION['user'].",$itemdata->item_id,now())";
                                 $stm = $conn->prepare($query3);
                                 $stm->execute();
- 
                             }
                         }
                     ?>
@@ -133,14 +132,10 @@
                     <label for="txtPassword">Password:</label>
                     <div><input type="text" name="txtPassword" id="txtPassword"/><input type="submit" onclick="isClicked()" id="btnConvert" value="convert" name="btnConvert"/></div>
 
-                    
                     <?php if(isset($_POST['btnConvert']) && isset($_POST['txtPassword'])) {
                     ?>      <label for="txtHashed">Hashed password:</label>    
                             <div><input type="text" value="<?= hashPassword($_POST['txtPassword'])?>" name="txtHashed" id="txtHashed" readonly/></div>
                     <?php } ?>
-                    
-                    
-                    
                     
                     <label for="txtFirstName">First name:</label>
                     <div><input type="text" name="txtFirstName" id="txtFirstName"/></div>
@@ -157,7 +152,6 @@
                     <label for="txtEmail">Email:</label>
                     <div><input type="text" name="txtEmail" id="txtEmail"/></div>
                     
-                    
                     <input type="submit" class="btnForm" name="btnSave"/>
                     <?php 
                         if(isset($_POST['btnSave']) && isset($_POST['txtHashed'])) {
@@ -170,9 +164,7 @@
                             $stm->bindParam(":firstname",$_POST['txtFirstName']);
                             $stm->bindParam(":surname",$_POST['txtSurname']);
                             $stm->bindParam(":prefix",$_POST['txtPrefix']);
-                            $stm->execute();
-                            
-                            
+                            $stm->execute(); 
                         }
                     ?>
                 </form>
