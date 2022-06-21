@@ -61,14 +61,12 @@
             </form>
         </div>
     
-
     <?php 
         if(empty($_SESSION['shoppingCart'])) {
     ?>      <h3>Your shoppingcart is empty.</h3>
     <?php
         }
 
-        
         if(isset($_POST['btnAdd'])) {
             $id = $_POST['id'];
             $_SESSION['shoppingCart'][$id] += 1;
@@ -77,7 +75,8 @@
             $id = $_POST['id'];
             $_SESSION['shoppingCart'][$id] -= 1;
         }
-        if(isset($_POST['btnOrder']) && isset($_SESSION['shoppingCart'])) {
+
+        if(isset($_POST['btnOrder']) && isset($_SESSION['shoppingCart']) && $_SESSION['shoppingCart'][$id]  > (100 - $amountOfTickets->ticketsSold)  ) {
             foreach($_SESSION['shoppingCart'] as $id => $value) {
                 $orderQuery = "INSERT INTO transaction (`user_id`,`ticket_id`,`date`,`amount`)". 
                 " VALUES (".$_SESSION['user'].",$id,NOW(),$value)";

@@ -1,5 +1,13 @@
 <?php include("festivaldb.php");?>
-<?php session_start(); ?>
+<?php 
+    session_start(); 
+    $conn = connectToDB();
+    
+    $amountOfTicketsSoldQuery = "SELECT SUM(amount) as ticketsSold FROM transaction";
+    $stm = $conn->prepare($amountOfTicketsSoldQuery);
+    $stm->execute();
+    $amountOfTickets = $stm->fetch(PDO::FETCH_OBJ);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +18,7 @@
 <body>
     <?php require("menu.php") ?>
     <div class="content" id="webshopPage">
+        <h4><?=100 - $amountOfTickets->ticketsSold," tickets remaining"?></h4>
 
     <?php 
         $query = "SELECT * FROM ticket";

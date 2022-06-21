@@ -387,8 +387,6 @@ input {
     border-radius: 1.5rem;
 }
 
-
-
 #btnSearch:hover {
     border: #b2815e 2px solid;
 }
@@ -521,6 +519,12 @@ iframe {
 #webshopPage {
     background-color: #922829;
     flex-direction: column;
+}
+
+h4 {
+    margin-right: 4vw;
+    color: white;
+    align-self: flex-end;
 }
 
 .ticket-div {

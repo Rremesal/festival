@@ -1,6 +1,5 @@
 
 extra: bevestig wachtwoord veld
-extra: zichtbaar maken van wachtwoord-input icoontje
 
 kleuren-pallete:
 hooibaal:  #b2815e
@@ -10,7 +9,6 @@ tarwe: #dfb05f
 
  - vergeet niet de 'titles' van de pagina's aan te passen!
  - nieuwsitems padding vergroten zodat de datum niet tegen de randen aan ligt
- - hoe zorg ik ervoor dat in de dropdown alleen de 'log out' optie je uitlogt en niet de 'logged in as....'?
- - verwijder br's uit login.php: zet margin-bottom op de inputs
+
 
 
