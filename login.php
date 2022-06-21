@@ -25,10 +25,13 @@
                 <div><input type="text" name="txtEmail" id="txtEmail"/></div>
                 <label for="txtPassword">Password:</label>
                 <div><input type="password" name="txtPassword" id="txtPassword"/></div>
+                <label for="txtConfirmPassword">Confirm password:</label>
+                <div><input type="password" name="txtConfirmPassword"/></div>
                 <div><input type="submit"  value="Register" class="btnForm" name="btnRegister"/></div>
             
             <?php 
-            if(isset($_POST['btnRegister'])) {
+            if(isset($_POST['btnRegister']) && $_POST['txtPassword'] == $_POST['txtConfirmPassword']) {
+
                 insertUserInDB($_POST['txtFirstName'],$_POST['txtPrefix'], $_POST['txtSurname'],
                 $_POST['txtPhoneNumber'],$_POST['txtEmail'],$_POST['txtPassword']);
                 ?>    </form>
