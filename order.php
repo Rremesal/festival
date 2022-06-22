@@ -1,6 +1,11 @@
 <?php 
     include("festivaldb.php"); 
     $conn = connectToDB();
+
+    $amountOfTicketsSoldQuery = "SELECT SUM(amount) as ticketsSold FROM transaction";
+    $stm = $conn->prepare($amountOfTicketsSoldQuery);
+    $stm->execute();
+    $amountOfTickets = $stm->fetch(PDO::FETCH_OBJ);
 ?>
 <?php session_start(); ?>
 <!DOCTYPE html>
@@ -76,7 +81,7 @@
             $_SESSION['shoppingCart'][$id] -= 1;
         }
 
-        if(isset($_POST['btnOrder']) && isset($_SESSION['shoppingCart']) && $_SESSION['shoppingCart'][$id]  > (100 - $amountOfTickets->ticketsSold)  ) {
+        if(isset($_POST['btnOrder']) && isset($_SESSION['shoppingCart']) && ($_SESSION['shoppingCart'][$id]  < (20 - $amountOfTickets->ticketsSold))  ) {
             foreach($_SESSION['shoppingCart'] as $id => $value) {
                 $orderQuery = "INSERT INTO transaction (`user_id`,`ticket_id`,`date`,`amount`)". 
                 " VALUES (".$_SESSION['user'].",$id,NOW(),$value)";

@@ -18,7 +18,7 @@
 <body>
     <?php require("menu.php") ?>
     <div class="content" id="webshopPage">
-        <h4><?=100 - $amountOfTickets->ticketsSold," tickets remaining"?></h4>
+        <h4><?=20 - $amountOfTickets->ticketsSold," tickets remaining"?></h4>
 
     <?php 
         $query = "SELECT * FROM ticket";
