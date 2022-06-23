@@ -92,6 +92,11 @@
             header("Location: ordered.php");
             unset($_SESSION['shoppingCart']);
         }
+
+        if($_SESSION['shoppingCart'][$id]  > (20 - $amountOfTickets->ticketsSold)) {
+    ?>      <h3>Your order exceeds the available tickets</h3>
+    <?php
+        }
     ?>
     </div>
 </body>
