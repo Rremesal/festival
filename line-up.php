@@ -101,7 +101,7 @@
 
     ?>
         </div>
-        <a href="#menu"><div id="topOfPage">UP</div></a>
+        <a href="#menu" id="topOfPage"><div>UP</div></a>
     </div>
     
 </body>
