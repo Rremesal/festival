@@ -11,7 +11,7 @@
     <title>Line-up</title>
     
 </head>
-<body>
+<body id="lineupBody">
     <?php require("menu.php"); ?>
     <div class="content" id="line-up-page">
         <div id="tools">
@@ -101,6 +101,7 @@
 
     ?>
         </div>
+        <a href="#menu"><div id="topOfPage">UP</div></a>
     </div>
     
 </body>
