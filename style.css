@@ -368,6 +368,20 @@ input {
     overflow-y: hidden;
 }
 
+* {
+    scroll-behavior: smooth;
+}
+
+#topOfPage {
+    border-radius: 50%;
+    padding: 4vh;
+    background-color: #db8217;
+    text-decoration: none;
+    color: white;
+    font-family: regularFont;
+    margin-bottom: 2vh;
+    margin-left: 89vw;
+}
 #tools {
     width: 100vw;
     height: 20vh;
