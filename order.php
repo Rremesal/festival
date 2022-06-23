@@ -43,7 +43,7 @@
                                 <input type="submit" name="btnSubtract" value="-"/>
                                 <?=$amount?>
                                 <input type="text" name="id" value="<?=$id?>" hidden/>
-                                <input type="submit" value="+" name="btnAdd"/>
+                                <input type="submit"name="btnAdd" value="+" />
                             </form>
                         </div> 
                     </td>
@@ -75,13 +75,15 @@
         if(isset($_POST['btnAdd'])) {
             $id = $_POST['id'];
             $_SESSION['shoppingCart'][$id] += 1;
+            header("Refresh: 0");
         }
         if(isset($_POST['btnSubtract']) && $_SESSION['shoppingCart'][$id] > 0) {
             $id = $_POST['id'];
             $_SESSION['shoppingCart'][$id] -= 1;
+            header("Refresh: 0");
         }
 
-        if(isset($_POST['btnOrder']) && isset($_SESSION['shoppingCart']) && ($_SESSION['shoppingCart'][$id]  < (20 - $amountOfTickets->ticketsSold))  ) {
+        if(isset($_POST['btnOrder']) && isset($_SESSION['shoppingCart']) && ($_SESSION['shoppingCart'][$id]  <= (20 - $amountOfTickets->ticketsSold))  ) {
             foreach($_SESSION['shoppingCart'] as $id => $value) {
                 $orderQuery = "INSERT INTO transaction (`user_id`,`ticket_id`,`date`,`amount`)". 
                 " VALUES (".$_SESSION['user'].",$id,NOW(),$value)";
