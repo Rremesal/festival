@@ -49,7 +49,7 @@
                 <div><input type="submit" class="btnForm" name="btnLogin" value="Log in"/></div>
                 
                 <?php 
-                if(isset($_POST['btnLogin'])) varifyPasswordOfUser($_POST['txtEmailLogin'],$_POST['txtPasswordLogin']);
+                if(isset($_POST['btnLogin'])) verifyPasswordOfUser($_POST['txtEmailLogin'],$_POST['txtPasswordLogin']);
                 ?>
             </form>
         
