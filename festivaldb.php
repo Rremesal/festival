@@ -43,7 +43,7 @@
         } else echo "This email-address already exists";
     }
 
-    function varifyPasswordOfUser($email,$password) {
+    function verifyPasswordOfUser($email,$password) {
         $conn = connectToDB();
         $query = "SELECT * FROM user WHERE email=:username";
         $stm = $conn->prepare($query);
