@@ -2,10 +2,8 @@
     include("festivaldb.php"); 
     $conn = connectToDB();
 
-    $amountOfTicketsSoldQuery = "SELECT SUM(amount) as ticketsSold FROM transaction";
-    $stm = $conn->prepare($amountOfTicketsSoldQuery);
-    $stm->execute();
-    $amountOfTickets = $stm->fetch(PDO::FETCH_OBJ);
+    $totalTicketsSold = TotalTicketsSold();
+    $remainingTickets = 60 - $totalTicketsSold->ticketsSold;
 ?>
 <?php session_start(); ?>
 <!DOCTYPE html>
@@ -83,23 +81,20 @@
             header("Refresh: 0");
         }
 
-        if(isset($_POST['btnOrder']) && isset($_SESSION['shoppingCart']) && ($_SESSION['shoppingCart'][$id]  <= (20 - $amountOfTickets->ticketsSold))  ) {
-            foreach($_SESSION['shoppingCart'] as $id => $value) {
-                $orderQuery = "INSERT INTO transaction (`user_id`,`ticket_id`,`date`,`amount`)". 
-                " VALUES (".$_SESSION['user'].",$id,NOW(),$value)";
-                echo $orderQuery."<br/>";
-                $stm = $conn->prepare($orderQuery);
-                $stm->execute();
-            } 
-            header("Location: ordered.php");
-            unset($_SESSION['shoppingCart']);
-        }
-
-        if(isset($_SESSION['shoppingCart']) && $_SESSION['shoppingCart'][$id]  > (20 - $amountOfTickets->ticketsSold)) {
-    ?>      <h3>Your order exceeds the available tickets</h3>
-    <?php
-        }
-    ?>
+        if(isset($_POST['btnOrder']) && isset($_SESSION['shoppingCart']) ) {
+            if ($_SESSION['shoppingCart'][$id]  <= $remainingTickets) {
+                foreach($_SESSION['shoppingCart'] as $id => $value) {
+                    $query = "INSERT INTO transaction (`user_id`,`ticket_id`,`date`,`amount`)". 
+                    " VALUES (".$_SESSION['user'].",$id,NOW(),$value)";
+                    $stm = $conn->prepare($query);
+                    if($stm->execute()) {
+                        
+                    }
+                    
+                }
+                //
+            }
+        } ?>
     </div>
 </body>
 </html>

@@ -2,11 +2,10 @@
 <?php 
     session_start(); 
     $conn = connectToDB();
-    
-    $amountOfTicketsSoldQuery = "SELECT SUM(amount) as ticketsSold FROM transaction";
-    $stm = $conn->prepare($amountOfTicketsSoldQuery);
-    $stm->execute();
-    $amountOfTickets = $stm->fetch(PDO::FETCH_OBJ);
+
+    $totalTicketsSold = TotalTicketsSold();
+   
+    $remainingTickets = 60 - $totalTicketsSold->ticketsSold;
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,24 +17,22 @@
 <body>
     <?php require("menu.php") ?>
     <div class="content" id="webshopPage">
-        <h4><?=20 - $amountOfTickets->ticketsSold," tickets remaining"?></h4>
-
+        <h3 id="remainingTickets"><?=$remainingTickets." "."tickets still remaining"?></h3>
     <?php 
-        $query = "SELECT * FROM ticket";
-        $conn = connectToDB();
-        $stm = $conn->prepare($query);
-        if($stm->execute()) {
-            $data = $stm->fetchAll(PDO::FETCH_OBJ);
-           
-            foreach($data as $ticket) {
-        ?>  <div class="ticket-div">
+        $tickets = getTickets();
+        foreach($tickets as $ticket) {
+    ?>  <div class="ticket-div">
+        <?php
+            $query = "SELECT amount FROM amountSoldTable WHERE ticket_id = $ticket->ticket_id";
+            $stm = $conn->prepare($query);
+            $stm->execute();
+            $amountOfTicketsSold = $stm->fetch(PDO::FETCH_OBJ);
+        ?>
                     <div class="ticket-info">
-                        <div class="">
                         <h2><?=$ticket->ticket_type;?></h2>
                         
                         <div class="ticket-price">
                             <h1><?="€ ".$ticket->price;?></h1>
-                        </div>
                         </div>
                         
                         <form method="POST">
@@ -56,10 +53,9 @@
                     <div id="ticket-image">
                         <img src="<?=$ticket->image;?>"/>
                     </div>
-                </form>
             </div>
                 <br/>
-        <?php  }} ?>
+        <?php  } ?>
         
 
 

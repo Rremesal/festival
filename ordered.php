@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +9,7 @@
     <?php include("menu.php");?>
     <div id="orderedDiv">
         <h2>Your order has been placed.</h2>
+        <?php unset($_SESSION['shoppingCart']); ?>
     </div>
     
 </body>
