@@ -88,13 +88,14 @@
                     " VALUES (".$_SESSION['user'].",$id,NOW(),$value)";
                     $stm = $conn->prepare($query);
                     if($stm->execute()) {
-                        
+                        header("Location: ordered.php");
                     }
-                    
                 }
-                //
+            } else {
+            ?> <h3>Your order exceeds ticket availability: <?=$remainingTickets?></h3>
+            <?php
             }
-        } ?>
+        }   ?>
     </div>
 </body>
 </html>
