@@ -1,5 +1,4 @@
 
-
 <?php 
     function connectToDB() {
         $host = "localhost";
@@ -66,4 +65,20 @@
 
         return $hashedPassword;
     }
-?>
+
+    function getTickets() {
+        $query = "SELECT * FROM ticket";
+        $conn = connectToDB();
+        $stm = $conn->prepare($query);
+        if($stm->execute()) {
+            return $stm->fetchAll(PDO::FETCH_OBJ);
+        }
+    }
+
+function TotalTicketsSold() {
+    $conn = connectToDB();
+    $query = "SELECT SUM(amount) as ticketsSold FROM transaction";
+    $stm = $conn->prepare($query);
+    $stm->execute();
+    return $stm->fetch(PDO::FETCH_OBJ);
+}
