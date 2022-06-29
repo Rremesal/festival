@@ -1,17 +1,15 @@
 <?php 
     include("festivaldb.php"); 
     $conn = connectToDB();
-
+    session_start(); 
     $totalTicketsSold = TotalTicketsSold();
     $remainingTickets = 60 - $totalTicketsSold->ticketsSold;
 ?>
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css"/>
     <title>Order</title>
-    <script src="script.js"></script>
 </head>
 <body id="orderBody">
     <?php include("menu.php"); ?>
@@ -48,8 +46,7 @@
                     <td><?=$data->price?></td>
                     <td><a href="removefromcart.php?id=<?=$id?>"><img id="trash" src="images/trash.png"/></a></td>
                 </tr>
-                
-                <?php }?>
+            <?php }?>
             <?php }?>
             <tr id="totalPrice-row">
                 <td>Totaal:</td>
@@ -57,13 +54,11 @@
                 <td><?= $totalPrice.".00"?></td>
             </tr>
         </table>
-
         <div id="orderDiv">
             <form method="POST">
                 <input type="submit" value="Order" name="btnOrder" class="btnForm"/>
             </form>
         </div>
-    
     <?php 
         if(empty($_SESSION['shoppingCart'])) {
     ?>      <h3>Your shoppingcart is empty.</h3>
@@ -97,5 +92,6 @@
             }
         }   ?>
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

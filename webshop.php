@@ -1,10 +1,8 @@
 <?php include("festivaldb.php");?>
 <?php 
-    session_start(); 
     $conn = connectToDB();
-
+    session_start(); 
     $totalTicketsSold = TotalTicketsSold();
-   
     $remainingTickets = 60 - $totalTicketsSold->ticketsSold;
 ?>
 <!DOCTYPE html>
@@ -12,12 +10,17 @@
 <head>
     <title>Webshop</title>
     <link rel="stylesheet" href="style.css"/>
-    <script src="script.js"></script>
+    
 </head>
 <body>
     <?php require("menu.php") ?>
     <div class="content" id="webshopPage">
-        <h3 id="remainingTickets"><?=$remainingTickets." "."tickets still remaining"?></h3>
+        <div id="webshop-info">
+            <h3 id="remainingTickets"><?=$remainingTickets." "."tickets still remaining"?></h3>
+            <?php if(isset($_POST['btnSubmit'])) {
+            ?>      <h3 id="ticketAdded"><?="Ticket(s) added to cart"?></h3>
+            <?php }?>
+        </div>
     <?php 
         $tickets = getTickets();
         foreach($tickets as $ticket) {
@@ -30,11 +33,9 @@
         ?>
                     <div class="ticket-info">
                         <h2><?=$ticket->ticket_type;?></h2>
-                        
                         <div class="ticket-price">
                             <h1><?="€ ".$ticket->price;?></h1>
                         </div>
-                        
                         <form method="POST">
                             <input type="text" name="ticket_id" value="<?=$ticket->ticket_id?>" hidden/>
                             <div class="ticket-form">
@@ -49,16 +50,12 @@
                             </div>
                         </form>
                     </div>
-
                     <div id="ticket-image">
                         <img src="<?=$ticket->image;?>"/>
                     </div>
             </div>
                 <br/>
         <?php  } ?>
-        
-
-
         <?php
             if(isset($_POST['btnSubmit'])) {
                 $ticketId = $_POST['ticket_id'];
@@ -69,10 +66,7 @@
                 else $_SESSION['shoppingCart'][$ticketId] = $amount;
             }
         ?>
-
-
-
     </div>
-    
+    <script src="script.js"></script>
 </body>
 </html>

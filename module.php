@@ -8,7 +8,6 @@
 <html>
 <head>
     <link rel="stylesheet" href="style.css"/>
-    <script src="script.js"></script>
     <title>Management Tool</title>
 </head>
 <body id="moduleBody">
@@ -22,8 +21,8 @@
                     <th>Income</th>
                 </tr>
                 <?php 
-                    $ticketsSoldQuery = "SELECT * FROM transaction LEFT JOIN ticket ON ticket.ticket_id=transaction.ticket_id GROUP BY ticket_type";
-                    $stm = $conn->prepare($ticketsSoldQuery);
+                    $query = "SELECT * FROM transaction LEFT JOIN ticket ON ticket.ticket_id=transaction.ticket_id GROUP BY ticket_type";
+                    $stm = $conn->prepare($query);
                     $stm->execute();
                     $tickets = $stm->fetchAll(PDO::FETCH_OBJ);
                     $totalIncome = 0;
@@ -50,17 +49,11 @@
                 <h2>NewsItems</h2>
                 <form method="POST">
                     <label for="txtHeader">Header:</label>
-                    <div>
-                        <input type="text" id="txtHeader" name="txtHeader">
-                    </div>
-                    
+                    <div><input type="text" id="txtHeader" name="txtHeader"></div>
                     <label for="txtNewsitem">Content:</label>
-                    <div>
-                        <textarea type="text" id="txtNewsitem" name="txtNewsitem" maxlength="200" rows="3"></textarea>
-                    </div>
-                    <br/>
+                    <div><textarea type="text" id="txtNewsitem" name="txtNewsitem" maxlength="200" rows="3"></textarea></div>
                     <input type="submit" name="btnSaveItem" class="btnForm"/>
-                    <br/>
+                    
                     <?php 
                         if(isset($_POST['btnSaveItem'])) {
                             $header = $_POST['txtHeader'];
@@ -68,8 +61,8 @@
                             $query = "INSERT INTO newsitem (header,content) VALUES ('$header','$newsitem')";
                             $stm = $conn->prepare($query);
                             if($stm->execute()) {
-                                echo "Newsitem added";
-                    ?>          </form> 
+                    ?>          <h2><?="Newsitem added"?></h2> 
+                                </form> 
                     <?php               
                                 $query2 = "SELECT item_id FROM newsitem WHERE content='$newsitem'";
                                 $stm = $conn->prepare($query2);
@@ -113,11 +106,10 @@
 
                         $query = "INSERT INTO lineup (first_name,last_name,image,weblink,twitterlink,preview)". 
                         "VALUES ('$firstName','$lastName','$image','$webLink','$twitterLink','$preview')";
-                        echo $query;
                         $stm = $conn->prepare($query);
                         if($stm->execute()) {
-                            echo "Artist added";
-                ?>          </form>
+                ?>          <h2><?="Artist added"?></h2>
+                            </form>
                 <?php
                         }
                     }
@@ -139,41 +131,38 @@
                     
                     <label for="txtFirstName">First name:</label>
                     <div><input type="text" name="txtFirstName" id="txtFirstName"/></div>
-                    
                     <label for="txtPrefix">(Prefix + ) Last name:</label>
                     <div>
                         <input type="text" name="txtPrefix" class="inputPrefix"/>
                         <input type="text" name="txtSurname" id="txtSurname"/>
                     </div>
-                    
                     <label for="txtPhonenumber">Phone number:</label>
                     <div><input type="text" name="txtPhonenumber" id="txtPhonenumber"/></div>
-                    
                     <label for="txtEmail">Email:</label>
                     <div><input type="text" name="txtEmail" id="txtEmail"/></div>
-                    
                     <input type="submit" class="btnForm" name="btnSave"/>
+                    
                     <?php 
                         if(isset($_POST['btnSave']) && isset($_POST['txtHashed'])) {
-                            $insertUserQuery = "INSERT INTO user (email, password,phonenumber,firstname,surname_prefix,surname,isAdmin)". 
+                            $query = "INSERT INTO user (email, password,phonenumber,firstname,surname_prefix,surname,isAdmin)". 
                             "VALUES ( :email, :password, :phonenumber, :firstname, :prefix, :surname, 1)";
-                            $stm = $conn->prepare($insertUserQuery);
+                            $stm = $conn->prepare($query);
                             $stm->bindParam(":email",$_POST['txtEmail']);
                             $stm->bindParam(":password",$_POST['txtHashed']);
                             $stm->bindParam(":phonenumber",$_POST['txtPhonenumber']);
                             $stm->bindParam(":firstname",$_POST['txtFirstName']);
                             $stm->bindParam(":surname",$_POST['txtSurname']);
                             $stm->bindParam(":prefix",$_POST['txtPrefix']);
-                            $stm->execute(); 
+                            if($stm->execute()) {
+                    ?>          <h2><?="Admin added"?></h2>
+                    <?php
+                            }
                         }
                     ?>
                 </form>
             </div>
         </div>
     </div>
-
-    
-
-
+    <script src="script.js"></script>
 </body>
 </html>

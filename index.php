@@ -1,14 +1,13 @@
 <?php 
     include("festivaldb.php"); 
     $conn = connectToDB();
+    session_start(); 
 ?>
-<?php session_start(); ?>
 <!DOCTYPE html>
 <html>
 <head>
-    <script src="script.js"></script>
     <link rel="stylesheet" href="style.css"/>
-    <title>Home - </title>
+    <title>Home</title>
 </head>
 <body id="home">
     <?php require("menu.php"); ?>
@@ -29,7 +28,6 @@
                 </div>
             </div>
         </a>
-
         <a href="login.php">
             <div class="attention-items"> 
                 <img src="images/login_item.png"/>
@@ -60,12 +58,11 @@
                             <p><?= $newsitems->content; ?><p>
                         </div>
                     </div>
-                    <br/>
             <?php        
                 }
-                
             } else echo "mislukt";
             ?>
     </section>
+    <script src="script.js"></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php 
     include("festivaldb.php"); 
     $conn = connectToDB();
+    session_start();
 ?>
 <!DOCTYPE html>
 <html>
@@ -28,7 +29,6 @@
                 <label for="txtConfirmPassword">Confirm password:</label>
                 <div><input type="password" name="txtConfirmPassword"/></div>
                 <div><input type="submit"  value="Register" class="btnForm" name="btnRegister"/></div>
-            
             <?php 
             if(isset($_POST['btnRegister']) && $_POST['txtPassword'] == $_POST['txtConfirmPassword']) {
 
@@ -38,36 +38,24 @@
                 <?php
             }
                 ?>
-                </form>
+            </form>
 
             <form id="loginForm" method="POST">
                 <h2>Log in</h2>
                 <label for="txtEmailLogin">Email:</label>
                 <div><input type="text" name="txtEmailLogin" id="txtEmailLogin"/></div>
                 <label for="txtPasswordLogin">Password:</label>
-                <div><input type="text" name="txtPasswordLogin" id="txtPasswordLogin"/></div>
+                <div><input type="password" name="txtPasswordLogin" id="txtPasswordLogin"/></div>
                 <div><input type="submit" class="btnForm" name="btnLogin" value="Log in"/></div>
-                
+
                 <?php 
-                if(isset($_POST['btnLogin'])) verifyPasswordOfUser($_POST['txtEmailLogin'],$_POST['txtPasswordLogin']);
+                    if(isset($_POST['btnLogin'])) verifyPasswordOfUser($_POST['txtEmailLogin'],$_POST['txtPasswordLogin']);
                 ?>
             </form>
-        
+
+           
         </div>
         <div id="imageDiv"></div>
     </div>
-
-
-        
-            
-    
-
-        
-    
-        
-            
-
-   
-    
 </body>
 </html>

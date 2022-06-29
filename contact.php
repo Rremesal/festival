@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,8 +8,7 @@
 <body>
     <?php require("menu.php");?>
     <div class="content" id="contactpage">
-        <div id="contactImage">
-        </div>
+        <div id="contactImage"></div>
         <div id="contact-box">
             <div id="contactInfo">
                 <h2>Contact Info</h2>
@@ -24,8 +24,7 @@
                 </iframe>
             </div>
         </div>
-        
-
     </div>
+    <script src="script.js"></script>
 </body>
 </html>

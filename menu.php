@@ -1,12 +1,19 @@
 
 <a href="index.php"><img id="logo" src="images/logo.png"/></a>
-<a href="order.php"><img id="shoppingcartLogo" src="images/shoppingcart2.png"/></a>
+<?php
+    if(isset($_SESSION['user'])) {
+?>      <a href="order.php"><img id="shoppingcartLogo" src="images/shoppingcart2.png"/></a>
+<?php } else {
+?>       <a href="login.php"><img id="shoppingcartLogo" src="images/shoppingcart2.png"/></a>   
+<?php }?>
+
+
 <?php if(isset($_SESSION['user_name'])) {
 ?>      <a onclick="showDropDown()"><img id="userLogo" src="images/user_logo.png"/></a>
 <?php } ?>
 
 <div id="dropdown">
-    <div><a href="login.php"> <?php if(!isset($_SESSION['user_name'])) echo "Sign in"; else echo "Logged in as: ".$_SESSION['user_name']; ?></a></div>
+    <div><a href="login.php"> <?="Logged in as: ".$_SESSION['user_name']; ?></a></div>
     <?php  if(isset($_SESSION['user_name'])) {
     ?>     <a href="logout.php">Log out</a>
     <?php
