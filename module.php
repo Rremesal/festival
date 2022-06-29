@@ -31,7 +31,7 @@
                 ?>      <tr>
                             <td><?=$ticket->ticket_type?></td>
                             <td><?=$ticket->amount?></td>
-                            <td><?= "€ ",$ticket->price += $ticket->price?></td>
+                            <td><?= "€ ",$ticket->price *= $ticket->amount?></td>
                         </tr>
                         <?php $totalIncome += $ticket->price?>
                 <?php
