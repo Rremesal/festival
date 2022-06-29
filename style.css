@@ -540,10 +540,20 @@ iframe {
     flex-direction: column;
 }
 
+h3 {
+    color: white;
+    margin-left: 3vw;
+}
+
 h4 {
     margin-right: 4vw;
     color: white;
     align-self: flex-end;
+}
+
+#remainingTickets {
+    margin-right: 0;
+    font-family: headerFont;
 }
 
 .ticket-div {
@@ -580,7 +590,8 @@ h4 {
     border-radius: 50%;
     width: 10vw;
     height: 10vh;
-    margin-left: 3vw;
+    margin-left: 0;
+    margin-top: 10vh;
 }
 
 .ticket-price h1 {
