@@ -29,7 +29,8 @@
                         $stm = $conn->prepare($query);
                         $stm->execute();
                         $data = $stm->fetch(PDO::FETCH_OBJ);
-                        $totalPrice += $data->price;    
+                        $totalPricePerTicket = $data->price * $amount;
+                        $totalPrice += $totalPricePerTicket;    
                 ?> 
                 <tr>
                     <td><?=$data->ticket_type?></td>
