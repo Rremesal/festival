@@ -1,14 +1,17 @@
-
-extra: bevestig wachtwoord veld
-
 kleuren-pallete:
 hooibaal:  #b2815e
 schuur: #922829
 gitaar: #db8217
 tarwe: #dfb05f
 
- - vergeet niet de 'titles' van de pagina's aan te passen!
- - nieuwsitems padding vergroten zodat de datum niet tegen de randen aan ligt
+
+
+ voorbereiding toevoegen line-up:
+ naam: Carly Pearce
+ link afbeelding: https://media.resources.festicket.com/www/artists/carly-pearce.jpg
+ web link: https://www.carlypearce.com
+ twitter link: https://twitter.com/carlypearce
+ preview link: https://www.youtube.com/watch/soNuy5VSmrk
 
 
 
